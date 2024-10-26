@@ -1,30 +1,56 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+using System.IO;
+using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
+using UnityEngine;
 
 public class Flashcard_Addition : MonoBehaviour
 {
-    List<string> Flashcards = new List<string>();
-    public GameObject Flashcard_input;
+    public List<string> Flashcards_front = new List<string>();
+    public List<string> Flashcards_back = new List<string>();
+
+    public List<string> Deck = new List<string>();
+
+    public GameObject front;
+    public GameObject back;
+    public GameObject deck;
+
+    public TextMeshProUGUI fbtoggle;
+    public TextMeshProUGUI faceIndicator;
+
+    bool fileExists;
 
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void addNote()
     {
-        if(Input.GetKeyDown(KeyCode.E)) 
+        Flashcards_front.Add(front.GetComponent<TMPro.TMP_InputField>().text);
+        front.GetComponent<TMPro.TMP_InputField>().text = string.Empty;
+        Flashcards_back.Add(back.GetComponent<TMPro.TMP_InputField>().text);
+        back.GetComponent<TMPro.TMP_InputField>().text = string.Empty;
+
+        Deck.Add(deck.GetComponent<TMPro.TMP_InputField>().text);
+    }
+
+    public void toggle_FrontBack()
+    {
+        front.SetActive(!front.activeSelf);
+        back.SetActive(!back.activeSelf);
+
+        if(front.activeSelf == true)
         {
-            Debug.Log(Flashcards);
+            fbtoggle.GetComponent<TextMeshProUGUI>().text = "Back";
+            faceIndicator.GetComponent<TextMeshProUGUI>().text = "Front";
         }
-    }
-
-    void addNote()
-    {
-        Flashcards.Add(Flashcard_input.GetComponent<TMPro.TextMeshProUGUI>().text);
+        else
+        {
+            fbtoggle.GetComponent<TextMeshProUGUI>().text = "Front";
+            faceIndicator.GetComponent<TextMeshProUGUI>().text = "Back";
+        }
     }
 }
