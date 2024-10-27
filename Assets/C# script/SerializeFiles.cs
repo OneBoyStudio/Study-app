@@ -9,7 +9,6 @@ public class SerializeFiles : MonoBehaviour
 {
 
     public GameObject listStorageObject;
-    public GameObject[] dependents;
 
     void Start()
     {
@@ -38,13 +37,13 @@ public class SerializeFiles : MonoBehaviour
 
         data.cardFront = listStorageObject.GetComponent<data_handling>().front;
         data.cardBack = listStorageObject.GetComponent<data_handling>().back;
-        data.Deck = listStorageObject.GetComponent<data_handling>().Deck;
+        data.Deck = listStorageObject.GetComponent<Flashcard_Addition>().Deck;
 
         bf.Serialize(file, data);
         file.Close();
     }
 
-    void loadPrior()
+    public void loadPrior()
     {
         if (File.Exists(Application.persistentDataPath + "/save.txt"))
         {

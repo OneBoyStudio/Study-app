@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class loadInDecks : MonoBehaviour
 {
     public GameObject deckPrefab;
     public GameObject data_import;
-
+    public groupcontroller groupcontroller;
     public GameObject content;
 
     public List<string> Decks;
@@ -51,6 +53,8 @@ public class loadInDecks : MonoBehaviour
         {
             GameObject deckinstance = Instantiate(deckPrefab,content.transform);
             deckinstance.GetComponentInChildren<TextMeshProUGUI>().text = s;
+            //deckinstance.GetComponentInChildren<Button>().onClick.AddListener(groupcontroller.ToQuiz);
+            //DateTime.Now
         }
     }
 }

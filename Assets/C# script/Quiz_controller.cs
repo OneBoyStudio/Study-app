@@ -15,12 +15,17 @@ public class TestSceneEventController : MonoBehaviour
     public data_handling data;
     public List<GameObject> buttons;
     static int target_number;
+    int correct_count;
+    public GameObject score;
+    public int score_number = 0;
+
+    public List<string> testlistfront;
+    public List<string> testlistback;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //listStorageObject.loadPrior();
         CreateTest();
     }
 
@@ -33,8 +38,9 @@ public class TestSceneEventController : MonoBehaviour
     void CreateTest()
     {
         //load target question
-        int length = data.front.Count;
+        int length = testlistback.Count;
         target_number = UnityEngine.Random.Range(0, length - 1);
+        Debug.Log(target_number);
 
         // set textbox to target index front
         Textbox.GetComponent<TextMeshProUGUI>().text = data.front[target_number];
@@ -51,6 +57,9 @@ public class TestSceneEventController : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             int temp = UnityEngine.Random.Range(0, data.back.Count - 1);
+
+
+
             answer.Add(data.back[temp]);
             temp_back.RemoveAt(temp);
         }
@@ -64,19 +73,27 @@ public class TestSceneEventController : MonoBehaviour
             answer.RemoveAt(temp);
         }
 
+
+
     }
 
     public void Respond(int num)
     {
         string respond =  buttons[num].GetComponentInChildren<TextMeshProUGUI>().text;
 
+        CreateTest();
+
         if (string.Equals(data.back[target_number], respond) == true){
+            correct_count += 1;
             //you are correct
+            score_number++;
         }
         else
         {
-            // you are wrong
+            score_number--;
         }
+
+        score.GetComponent<TextMeshProUGUI>().text = score_number.ToString();
     }
 
 

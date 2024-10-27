@@ -5,6 +5,7 @@ using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Flashcard_Addition : MonoBehaviour
 {
@@ -22,8 +23,12 @@ public class Flashcard_Addition : MonoBehaviour
     public TextMeshProUGUI fbtoggle;
     public TextMeshProUGUI faceIndicator;
 
-    bool fileExists;
+    public Button toggle;
+    public Sprite toggle_backside;
+    public Sprite toggle_frontside;
 
+    bool fileExists;
+    
     void Start()
     {
 
@@ -52,11 +57,13 @@ public class Flashcard_Addition : MonoBehaviour
         {
             fbtoggle.GetComponent<TextMeshProUGUI>().text = "Back";
             faceIndicator.GetComponent<TextMeshProUGUI>().text = "Front";
+            toggle.GetComponent<Image>().sprite = toggle_backside;
         }
         else
         {
             fbtoggle.GetComponent<TextMeshProUGUI>().text = "Front";
             faceIndicator.GetComponent<TextMeshProUGUI>().text = "Back";
+            toggle.GetComponent<Image>().sprite = toggle_frontside;
         }
     }
 }

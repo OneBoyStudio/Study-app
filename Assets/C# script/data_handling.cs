@@ -8,7 +8,6 @@ public class data_handling : MonoBehaviour
     public List<string> back = new List<string>();
 
     public List<string> Deck = new List<string>();
-
     void updateStorage(GameObject updater)
     {
         front = updater.GetComponent<Flashcard_Addition>().Flashcards_front;
