@@ -13,6 +13,8 @@ public class Flashcard_Addition : MonoBehaviour
 
     public List<string> Deck = new List<string>();
 
+    public GameObject listStorageObject;
+
     public GameObject front;
     public GameObject back;
     public GameObject deck;
@@ -29,6 +31,10 @@ public class Flashcard_Addition : MonoBehaviour
 
     public void addNote()
     {
+        listStorageObject.GetComponent<data_handling>().front.Add(front.GetComponent<TMPro.TMP_InputField>().text);
+        listStorageObject.GetComponent<data_handling>().back.Add(back.GetComponent<TMPro.TMP_InputField>().text);
+        listStorageObject.GetComponent<data_handling>().Deck.Add(deck.GetComponent<TMPro.TMP_InputField>().text);
+
         Flashcards_front.Add(front.GetComponent<TMPro.TMP_InputField>().text);
         front.GetComponent<TMPro.TMP_InputField>().text = string.Empty;
         Flashcards_back.Add(back.GetComponent<TMPro.TMP_InputField>().text);

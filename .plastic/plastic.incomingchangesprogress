@@ -1,0 +1,36 @@
+[
+  {
+    "MountId": "56e62dd7-241f-41e9-8c6b-dd4ca4513e62",
+    "AncestorCsetIds": [
+      20
+    ],
+    "SourceCsetId": 29,
+    "DestinationCsetId": 20,
+    "FileConflicts": [
+      {
+        "Path": "/Assets/Flashcard_Addition.cs",
+        "ItemId": 239,
+        "ParentItemId": 237,
+        "BaseRevId": 1055,
+        "SourceRevId": 1212,
+        "DestinationRevId": 1055
+      },
+      {
+        "Path": "/Assets/Scenes/SampleScene.unity",
+        "ItemId": 246,
+        "ParentItemId": 241,
+        "BaseRevId": 1110,
+        "SourceRevId": 1343,
+        "DestinationRevId": 1110
+      },
+      {
+        "Path": "/Assets/SerializeFiles.cs",
+        "ItemId": 983,
+        "ParentItemId": 237,
+        "BaseRevId": 1111,
+        "SourceRevId": 1313,
+        "DestinationRevId": 1111
+      }
+    ]
+  }
+]

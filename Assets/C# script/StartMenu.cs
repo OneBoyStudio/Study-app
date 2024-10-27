@@ -16,6 +16,10 @@ public class StartMenu : MonoBehaviour
 
     public void Flashcard_Addition_Scene()
     {
+        Debug.Log("pressed");
         SceneManager.LoadScene("SampleScene");
     }
+
 }
+
+

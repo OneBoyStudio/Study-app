@@ -9,6 +9,7 @@ public class SerializeFiles : MonoBehaviour
 {
 
     public GameObject listStorageObject;
+    public GameObject[] dependents;
 
     void Start()
     {
@@ -35,9 +36,9 @@ public class SerializeFiles : MonoBehaviour
             file = File.Create(Application.persistentDataPath + "/save.txt");
         }
 
-        data.cardFront = listStorageObject.GetComponent<Flashcard_Addition>().Flashcards_front;
-        data.cardBack = listStorageObject.GetComponent<Flashcard_Addition>().Flashcards_back;
-        data.Deck = listStorageObject.GetComponent<Flashcard_Addition>().Deck;
+        data.cardFront = listStorageObject.GetComponent<data_handling>().front;
+        data.cardBack = listStorageObject.GetComponent<data_handling>().back;
+        data.Deck = listStorageObject.GetComponent<data_handling>().Deck;
 
         bf.Serialize(file, data);
         file.Close();
@@ -51,9 +52,9 @@ public class SerializeFiles : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + "/save.txt", FileMode.Open);
             saveData data = (saveData)bf.Deserialize(file);
 
-            listStorageObject.GetComponent<Flashcard_Addition>().Flashcards_front = data.cardFront;
-            listStorageObject.GetComponent<Flashcard_Addition>().Flashcards_back = data.cardBack;
-            listStorageObject.GetComponent<Flashcard_Addition>().Deck = data.Deck;
+            listStorageObject.GetComponent<data_handling>().front = data.cardFront;
+            listStorageObject.GetComponent<data_handling>().back = data.cardBack;
+            listStorageObject.GetComponent<data_handling>().Deck = data.Deck;
 
             file.Close();
         }
